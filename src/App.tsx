@@ -1,5 +1,15 @@
-export function App() {
+import { ChakraProvider } from '@chakra-ui/react';
+import { Header } from './components/Header/Header';
+import { Timer } from './components/Timer/Timer';
+import './App.css';
+
+function App() {
     return (
-        <h1>React Typescript Webpack</h1>
+        <ChakraProvider>
+            <Header />
+            <Timer />
+        </ChakraProvider>
     )
 }
+
+export default App;
