@@ -1,12 +1,14 @@
-import { HStack, Button } from '@chakra-ui/react';
+import { HStack, Button, useDisclosure } from '@chakra-ui/react';
+import { ModalWindow } from '../Modal/Modal';
 
 function Header() {
     const logo = require("../../asset/resource/Pomodoro_timer.svg");
+    const onOpen = useDisclosure();
 
     return (
         <HStack justifyContent='space-between'>
             <img src={logo} />
-            <Button color='white' bgColor='green.400'>Новый сценарий +</Button>
+            <ModalWindow />
         </HStack>
     )
 }
