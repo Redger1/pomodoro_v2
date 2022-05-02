@@ -23,7 +23,7 @@ class Timer extends React.Component<any, TimerState> {
         }
     }
 
-    startTimer(timeLeft: number) {
+    startTimer(timeLeft: number): void {
         this.setState({
             isPaused: false,
             srcIcon: require('../../asset/resource/stop.svg'),
@@ -31,7 +31,6 @@ class Timer extends React.Component<any, TimerState> {
         })
 
         if (this.state.timer) clearInterval(this.state.timer);
-
         let timer = setInterval(() => {
             if(!this.state.isPaused) {
                 let timeLeft = this.state.timeLeft - 1
@@ -43,14 +42,13 @@ class Timer extends React.Component<any, TimerState> {
             }
         }, 1000)
 
-
         return this.setState({
             timeLeft: timeLeft,
             timer: timer
         })
     }
 
-    stopTimer() {
+    stopTimer(): void {
         this.setState({
             isPaused: true,
             srcIcon: require("../../asset/resource/play.svg"),
@@ -58,7 +56,7 @@ class Timer extends React.Component<any, TimerState> {
         })
     }
 
-    formatTimer(timeLeft : number) {
+    formatTimer(timeLeft : number): string {
         let minutes : number;
         let seconds : number | string;
 
@@ -69,22 +67,21 @@ class Timer extends React.Component<any, TimerState> {
         return `${minutes}:${seconds}`;
     }
 
-    timeLeftConvertToPercent() {
+    timeLeftConvertToPercent(): number {
         return this.state.timeLeft / this.state.totalTime * 100; 
     }
 
-    handleHover() {
+    handleHover(): void {
         this.setState({hovered: true});
     }
 
-    handleLeave() {
+    handleLeave(): void {
         this.setState({hovered: false});
     }
 
     render() {
         return (
             <div className='timer_body'>
-
                 <CircularProgress
                     onMouseLeave={this.handleLeave}
                     onMouseEnter={this.handleHover}
@@ -93,11 +90,7 @@ class Timer extends React.Component<any, TimerState> {
                     size={348}
                     value={this.timeLeftConvertToPercent()}>
 
-                    <CircularProgressLabel
-                        fontSize='4.5rem'
-                        fontFamily='clockicons'
-                        color={this.state.color}
-                    >
+                    <CircularProgressLabel fontSize='4.5rem' fontFamily='clockicons' color={this.state.color}>
                             {this.formatTimer(this.state.timeLeft)}
                     </CircularProgressLabel>
 
@@ -106,8 +99,8 @@ class Timer extends React.Component<any, TimerState> {
                         hovered={this.state.hovered}
                         srcIcon={this.state.srcIcon}
                         timeLeft={this.state.timeLeft}
-                        isPaused={this.state.isPaused}/>
-    
+                        isPaused={this.state.isPaused}
+                    />
                 </CircularProgress>
             </div>
         )

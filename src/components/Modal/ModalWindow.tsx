@@ -3,25 +3,33 @@ import { ChangeEvent, useState } from 'react';
 import { v4 as uuidv4 } from 'uuid';
 import { IProps } from '../../interface/TodoListState';
 
-export function ModalWindow({todoList, setTodoList} : IProps) {
+export function ModalWindow({setTodoList} : IProps) {
+    // Методы из ChakraUI
     const { isOpen, onOpen, onClose } = useDisclosure()
+    // Стейт input'ов
     const [inputFields, setInputFields] = useState<string[]>([''])
+    // Стейт заголовка списка дел
     const [todoHeading, setTodoHeading] = useState<string>('');
 
+    // Добавление нового поля для списка дел
     function handleAddFields() {
         setInputFields([...inputFields, ''])
     }
 
+    // Сохранение значений input'ов в стейт
     function handleChangeInput(event: ChangeEvent<HTMLInputElement>, index: number) {
         const values = [...inputFields];
         values[index] = event.target.value;
         setInputFields(values)
     }
 
+    // Сохранение значения заголовка списка дел
     function handleHeadingChange(event : ChangeEvent<HTMLInputElement>) {
         setTodoHeading(event.target.value);
     }
 
+    // Обновление стейта списка дел для передачи
+    // его в компоненту TodoList и закрытие модального окна
     function addTodos() {
         if(inputFields.length > 0) {
             setTodoList(todoList => [...todoList, {heading: todoHeading, name: inputFields, key: uuidv4()}]);

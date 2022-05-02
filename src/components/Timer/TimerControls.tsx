@@ -1,15 +1,16 @@
 import { ControlTimerProps } from "../../interface/ControlTimer"
 
 export const TimerControls = (props : ControlTimerProps) => {
-    const handleStartTimer = () => {
+    function handleStartTimer(): ControlTimerProps {
         return props.controlTimer(props.timeLeft)
     }
-    const handleStopTimer = () => {
+
+    function handleStopTimer(): ControlTimerProps {
         return props.controlTimer()
     }
     
     if (props.isPaused) {
-        return(
+        return (
             <div
                 onClick={handleStartTimer}
                 className={props.hovered ? 'timer_controls_paused' : 'timer_controls_paused--hidden'}
@@ -18,7 +19,7 @@ export const TimerControls = (props : ControlTimerProps) => {
             </div>
         )
     } else {
-        return(
+        return (
             <div
                 onClick={handleStopTimer}
                 className={props.hovered ? 'timer_controls_unPaused' : 'timer_controls_unPaused--hidden'}

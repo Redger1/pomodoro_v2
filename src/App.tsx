@@ -7,18 +7,11 @@ import { TodoListState } from './interface/TodoListState';
 import './App.css';
 
 function App() {
-    // Стейт для списка дел, которы передается в пропсы Header и TodoList
-    // Для того, чтобы связать эти два элемента и вывести список дел
-    // const initialState = {
-    //     name: '',
-    //     done: false,
-    //     key: 0
-    // }
     const [todoList, setTodoList]  = useState<TodoListState[]>([]);
 
     return (
         <ChakraProvider>
-            <Header todoList={todoList} setTodoList={setTodoList} />
+            <Header setTodoList={setTodoList} />
             <Timer />
             <TodoList  />
         </ChakraProvider>
