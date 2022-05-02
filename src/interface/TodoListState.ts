@@ -7,5 +7,6 @@ export interface TodoListState {
 }
 
 export type IProps = {
+    todoList?: TodoListState[]
     setTodoList: Dispatch<SetStateAction<TodoListState[]>> 
 }

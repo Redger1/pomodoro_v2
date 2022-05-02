@@ -34,6 +34,7 @@ export function ModalWindow({setTodoList} : IProps) {
         if(inputFields.length > 0) {
             setTodoList(todoList => [...todoList, {heading: todoHeading, name: inputFields, key: uuidv4()}]);
         }
+        setInputFields(['']);
         onClose();
     }
 

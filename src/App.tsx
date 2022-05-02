@@ -13,7 +13,7 @@ function App() {
         <ChakraProvider>
             <Header setTodoList={setTodoList} />
             <Timer />
-            <TodoList  />
+            <TodoList todoList={todoList} setTodoList={setTodoList} />
         </ChakraProvider>
     )
 }
