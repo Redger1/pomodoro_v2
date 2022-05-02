@@ -39,3 +39,8 @@
     left: 50%;
     transform: translate(-50%, -50%);
 }
+
+.todo-list__container {
+    display: flex;
+    justify-content: center;
+}

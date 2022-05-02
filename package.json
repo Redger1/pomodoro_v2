@@ -32,6 +32,7 @@
   },
   "dependencies": {
     "css-loader": "^6.7.1",
-    "style-loader": "^3.3.1"
+    "style-loader": "^3.3.1",
+    "uuidv4": "^6.2.13"
   }
 }

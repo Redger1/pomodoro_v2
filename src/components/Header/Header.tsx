@@ -1,14 +1,14 @@
-import { HStack, Button, useDisclosure } from '@chakra-ui/react';
-import { ModalWindow } from '../Modal/Modal';
+import { HStack } from '@chakra-ui/react';
+import { IProps } from '../../interface/TodoListState';
+import { ModalWindow } from '../Modal/ModalWindow';
 
-function Header() {
+function Header({todoList, setTodoList} : IProps) {
     const logo = require("../../asset/resource/Pomodoro_timer.svg");
-    const onOpen = useDisclosure();
 
     return (
         <HStack justifyContent='space-between'>
             <img src={logo} />
-            <ModalWindow />
+            <ModalWindow todoList={todoList} setTodoList={setTodoList} />
         </HStack>
     )
 }
