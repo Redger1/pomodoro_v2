@@ -31,10 +31,13 @@ export function ModalWindow({setTodoList} : IProps) {
     // Обновление стейта списка дел для передачи
     // его в компоненту TodoList и закрытие модального окна
     function addTodos() {
-        if(inputFields.length > 0) {
-            setTodoList(todoList => [...todoList, {heading: todoHeading, name: inputFields, key: uuidv4()}]);
+        if(inputFields[0] === '' || todoHeading == '') {
+            alert('Заполните все поля');
+            return;
         }
+        setTodoList(todoList => [...todoList, {heading: todoHeading, name: inputFields, key: uuidv4()}]);
         setInputFields(['']);
+        setTodoHeading('')
         onClose();
     }
 
